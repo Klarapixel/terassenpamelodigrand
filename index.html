@@ -28,6 +28,7 @@ small{opacity:.7}
 <div class="badge">Nedräkning</div>
 <h1>Tillträde<br>Melodigränd 6</h1>
 <p class="subtitle">till fredag 11 december kl 09.00</p>
+<p style="opacity:.85;margin:-18px 0 24px;font-size:15px">✍️ Kontrakt skrivet 1 juli 2026</p>
 <div class="grid">
 <div class="box"><div class="num" id="d">--</div><div class="label">Dagar</div></div>
 <div class="box"><div class="num" id="h">--</div><div class="label">Timmar</div></div>
@@ -41,7 +42,7 @@ small{opacity:.7}
 </div>
 <script>
 const target = new Date('2026-12-11T09:00:00+01:00');
-const start = new Date('2026-11-14T00:00:00+01:00');
+const start = new Date('2026-07-01T00:00:00+02:00');
 function pad(n){return String(n).padStart(2,'0')}
 function tick(){
   const now = new Date();
@@ -68,7 +69,8 @@ function tick(){
   document.getElementById('bar').style.width=pct.toFixed(1)+'%';
   const weeks = Math.floor(days/7);
   const rest = days%7;
-  document.getElementById('meta').textContent = days + ' dagar kvar • ' + weeks + ' veckor och ' + rest + ' dagar kvar • ' + pct.toFixed(1) + '% av väntan har gått';
+  const elapsedDays = Math.floor((now-start)/86400000);
+  document.getElementById('meta').textContent = days + ' dagar kvar • ' + weeks + ' veckor och ' + rest + ' dagar kvar • ' + elapsedDays + ' dagar sedan kontraktet • ' + pct.toFixed(1) + '% av väntan har gått';
 }
 tick(); setInterval(tick,1000);
 </script>
